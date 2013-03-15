@@ -80,18 +80,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/bluelyte/transmission-remote.git",
-                "reference": "8deddd23ca6be9e8360d1d86f93d337df3d33ea6"
+                "reference": "0465f0239da97326d3da33f8dd6b67358aa2d9eb"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bluelyte/transmission-remote/zipball/8deddd23ca6be9e8360d1d86f93d337df3d33ea6",
-                "reference": "8deddd23ca6be9e8360d1d86f93d337df3d33ea6",
+                "url": "https://api.github.com/repos/bluelyte/transmission-remote/zipball/0465f0239da97326d3da33f8dd6b67358aa2d9eb",
+                "reference": "0465f0239da97326d3da33f8dd6b67358aa2d9eb",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
-            "time": "2013-03-15 00:56:49",
+            "time": "2013-03-15 02:21:16",
             "type": "library",
             "autoload": {
                 "classmap": [
