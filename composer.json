@@ -1,0 +1,19 @@
+{
+    "name": "bluelyte/johnny",
+    "description": "A library that interacts with IMDB, The Pirate Bay, and the transmission-remote CLI client to automate torrenting TV show episodes",
+    "keywords": [ "tpb", "pirate bay", "torrent", "torrents", "tv", "imdb", "transmission" ],
+    "license": "BSD-2-Clause",
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.3.3",
+        "bluelyte/tpb-client": "dev-master",
+        "bluelyte/imdb-client": "dev-master",
+        "bluelyte/transmission-remote": "dev-master",
+        "monolog/monolog": "1.4.0"
+    },
+    "autoload": {
+        "classmap": [
+            "src/Downloader.php"
+        ]
+    }
+}
