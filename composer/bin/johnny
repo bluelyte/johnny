@@ -1,0 +1,44 @@
+#!/usr/bin/env php
+<?php
+
+$paths = array(
+    // ./vendor/autoload.php when this is installed as a dependency of another project
+    __DIR__ . '/../../../autoload.php',
+
+    // ./vendor/autoload.php when this project is run stand-alone
+    __DIR__ . '/../../vendor/autoload.php',
+);
+
+foreach ($paths as $path) {
+    if (file_exists($path)) {
+        include $path;
+    }
+}
+
+if ($argc < 4) {
+    echo <<<EOS
+Usage: johnny [command] [path] [series]
+
+[command] is the command to execute. 'latest' is currently the only supported
+command.
+
+[path] is an existing writable path used as the destination for downloaded
+files.
+
+[series] is a comma-delimited list of identifiers taken from IMDB URLs for
+TV series for which episodes are downloaded.
+
+Example: johnny /path/to/Downloads tt12345,tt67890
+EOS;
+    exit(1);
+}
+
+$downloader = new \Bluelyte\Johnny\Downloader;
+$downloader->setDownloadPath($argv[2]);
+$downloader->setSeries(explode(',', $argv[3]));
+if ($argv[1] == 'latest') {
+    $downloader->downloadLatestEpisodes();
+} else {
+    echo 'Unrecognized command: ', $argv[1], PHP_EOL;
+    exit(1);
+}

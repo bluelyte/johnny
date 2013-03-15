@@ -11,6 +11,12 @@
         "bluelyte/transmission-remote": "dev-master",
         "monolog/monolog": "1.4.0"
     },
+    "bin": [
+        "composer/bin/johnny"
+    ],
+    "config": {
+        "bin-dir": "bin"
+    },
     "autoload": {
         "classmap": [
             "src/Downloader.php"
