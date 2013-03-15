@@ -72,9 +72,15 @@ class Downloader
 
             $logger->debug('Checking if episode ' . $latestEpisode . ' has already been downloaded');
             $pattern = '/' . preg_replace('/\s+/', '.+', preg_quote($title)) . '.+s0?' . $latestSeason . 'e0?' . $latestEpisode . '[^0-9]/i';
-            $iterator = new \RecursiveRegexIterator(new \RecursiveDirectoryIterator($downloadPath), $pattern);
-            if ($iterator->hasChildren()) {
-                $logger->debug('Episode has been downloaded, skipping');
+
+            $files = array_filter(
+                iterator_to_array(new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($downloadPath))),
+                function($entry) use ($pattern) {
+                    return (boolean) preg_match($pattern, $entry->getPathname());
+                }
+            );
+            if ($files) {
+                $logger->debug('Skipping, found episode at ' . reset($files));
                 continue;
             }
 
@@ -86,7 +92,7 @@ class Downloader
             });
             $result = reset($results);
             if (!$result) {
-                $logger->debug('No results found, skipping');
+                $logger->debug('Skipping, no results found');
                 continue;
             }
 
