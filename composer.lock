@@ -7,19 +7,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/bluelyte/imdb-client.git",
-                "reference": "914f8fa6d484bd31d3104a79c22010a039731f96"
+                "reference": "6adb29372a16898e179dcb8a661d292e6bdd876d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bluelyte/imdb-client/zipball/914f8fa6d484bd31d3104a79c22010a039731f96",
-                "reference": "914f8fa6d484bd31d3104a79c22010a039731f96",
+                "url": "https://api.github.com/repos/bluelyte/imdb-client/zipball/6adb29372a16898e179dcb8a661d292e6bdd876d",
+                "reference": "6adb29372a16898e179dcb8a661d292e6bdd876d",
                 "shasum": ""
             },
             "require": {
                 "fabpot/goutte": "1.0.*@dev",
                 "php": ">=5.3.3"
             },
-            "time": "2013-03-14 22:24:08",
             "type": "library",
             "autoload": {
                 "classmap": [
@@ -35,7 +34,8 @@
                 "imdb",
                 "movies",
                 "tv"
-            ]
+            ],
+            "time": "2013-03-30 22:40:40"
         },
         {
             "name": "bluelyte/tpb-client",
@@ -43,19 +43,18 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/bluelyte/tpb-client.git",
-                "reference": "c47384147457fa82337bcc38f5ab5b511f4c2160"
+                "reference": "5a5cc9db4fc0946435cd256882e78b05e3898564"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bluelyte/tpb-client/zipball/c47384147457fa82337bcc38f5ab5b511f4c2160",
-                "reference": "c47384147457fa82337bcc38f5ab5b511f4c2160",
+                "url": "https://api.github.com/repos/bluelyte/tpb-client/zipball/5a5cc9db4fc0946435cd256882e78b05e3898564",
+                "reference": "5a5cc9db4fc0946435cd256882e78b05e3898564",
                 "shasum": ""
             },
             "require": {
                 "fabpot/goutte": "1.0.*@dev",
                 "php": ">=5.3.3"
             },
-            "time": "2013-03-15 00:36:38",
             "type": "library",
             "autoload": {
                 "classmap": [
@@ -72,7 +71,8 @@
                 "torrent",
                 "torrents",
                 "tpb"
-            ]
+            ],
+            "time": "2013-03-31 15:15:38"
         },
         {
             "name": "bluelyte/transmission-remote",
@@ -80,18 +80,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/bluelyte/transmission-remote.git",
-                "reference": "0465f0239da97326d3da33f8dd6b67358aa2d9eb"
+                "reference": "e0e69d15552603bf6b2be3d93bfcdff969c76b8c"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bluelyte/transmission-remote/zipball/0465f0239da97326d3da33f8dd6b67358aa2d9eb",
-                "reference": "0465f0239da97326d3da33f8dd6b67358aa2d9eb",
+                "url": "https://api.github.com/repos/bluelyte/transmission-remote/zipball/e0e69d15552603bf6b2be3d93bfcdff969c76b8c",
+                "reference": "e0e69d15552603bf6b2be3d93bfcdff969c76b8c",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
-            "time": "2013-03-15 02:21:16",
             "type": "library",
             "autoload": {
                 "classmap": [
@@ -109,7 +108,8 @@
                 "torrent",
                 "torrents",
                 "transmission"
-            ]
+            ],
+            "time": "2013-03-31 10:31:49"
         },
         {
             "name": "fabpot/goutte",
@@ -117,12 +117,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/fabpot/Goutte.git",
-                "reference": "v1.0.1"
+                "reference": "3ebd52cee0c997d4e4c5e2fb5f10ee9de0e3fc46"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/fabpot/Goutte/zipball/v1.0.1",
-                "reference": "v1.0.1",
+                "url": "https://api.github.com/repos/fabpot/Goutte/zipball/3ebd52cee0c997d4e4c5e2fb5f10ee9de0e3fc46",
+                "reference": "3ebd52cee0c997d4e4c5e2fb5f10ee9de0e3fc46",
                 "shasum": ""
             },
             "require": {
@@ -135,7 +135,6 @@
                 "symfony/finder": ">=2.1,<3.0",
                 "symfony/process": ">=2.1,<3.0"
             },
-            "time": "2013-03-08 08:00:58",
             "type": "application",
             "extra": {
                 "branch-alias": {
@@ -161,7 +160,8 @@
             "homepage": "https://github.com/fabpot/Goutte",
             "keywords": [
                 "scraper"
-            ]
+            ],
+            "time": "2013-03-15 10:18:26"
         },
         {
             "name": "guzzle/guzzle",
@@ -169,12 +169,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/guzzle/guzzle.git",
-                "reference": "3e9b26d95db44fbd0021d3ddf1a98c53576251d6"
+                "reference": "ab8d35fbdf87d9d6a168e69ab3e880247d08f408"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/3e9b26d95db44fbd0021d3ddf1a98c53576251d6",
-                "reference": "3e9b26d95db44fbd0021d3ddf1a98c53576251d6",
+                "url": "https://api.github.com/repos/guzzle/guzzle/zipball/ab8d35fbdf87d9d6a168e69ab3e880247d08f408",
+                "reference": "ab8d35fbdf87d9d6a168e69ab3e880247d08f408",
                 "shasum": ""
             },
             "require": {
@@ -210,13 +210,13 @@
                 "doctrine/cache": "*",
                 "monolog/monolog": "1.*",
                 "phpunit/phpunit": "3.7.*",
+                "psr/log": "1.0.*",
                 "symfony/class-loader": "*",
                 "zend/zend-cache1": "1.12",
                 "zend/zend-log1": "1.12",
                 "zendframework/zend-cache": "2.0.*",
                 "zendframework/zend-log": "2.0.*"
             },
-            "time": "2013-03-14 22:31:39",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -254,7 +254,8 @@
                 "http client",
                 "rest",
                 "web service"
-            ]
+            ],
+            "time": "2013-03-31 02:18:40"
         },
         {
             "name": "monolog/monolog",
@@ -286,7 +287,6 @@
                 "mlehner/gelf-php": "Allow sending log messages to a GrayLog2 server",
                 "raven/raven": "Allow sending log messages to a Sentry server"
             },
-            "time": "2013-02-13 18:06:51",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -316,7 +316,8 @@
                 "log",
                 "logging",
                 "psr-3"
-            ]
+            ],
+            "time": "2013-02-13 18:06:51"
         },
         {
             "name": "psr/log",
@@ -332,7 +333,6 @@
                 "reference": "1.0.0",
                 "shasum": ""
             },
-            "time": "2012-12-21 11:40:51",
             "type": "library",
             "autoload": {
                 "psr-0": {
@@ -354,7 +354,8 @@
                 "log",
                 "psr",
                 "psr-3"
-            ]
+            ],
+            "time": "2012-12-21 11:40:51"
         },
         {
             "name": "symfony/browser-kit",
@@ -363,12 +364,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/BrowserKit.git",
-                "reference": "63ea9f3b5ca08ddbd336cd9957c2409fcb435757"
+                "reference": "b0aa5249d957930f93c0c2a3f1f10db0721cb6e9"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/BrowserKit/zipball/63ea9f3b5ca08ddbd336cd9957c2409fcb435757",
-                "reference": "63ea9f3b5ca08ddbd336cd9957c2409fcb435757",
+                "url": "https://api.github.com/repos/symfony/BrowserKit/zipball/b0aa5249d957930f93c0c2a3f1f10db0721cb6e9",
+                "reference": "b0aa5249d957930f93c0c2a3f1f10db0721cb6e9",
                 "shasum": ""
             },
             "require": {
@@ -382,7 +383,6 @@
             "suggest": {
                 "symfony/process": "2.2.*"
             },
-            "time": "2013-02-23 06:47:02",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -409,7 +409,8 @@
                 }
             ],
             "description": "Symfony BrowserKit Component",
-            "homepage": "http://symfony.com"
+            "homepage": "http://symfony.com",
+            "time": "2013-03-20 14:03:03"
         },
         {
             "name": "symfony/css-selector",
@@ -429,7 +430,6 @@
             "require": {
                 "php": ">=5.3.3"
             },
-            "time": "2013-01-31 21:39:01",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -456,7 +456,8 @@
                 }
             ],
             "description": "Symfony CssSelector Component",
-            "homepage": "http://symfony.com"
+            "homepage": "http://symfony.com",
+            "time": "2013-01-31 21:39:01"
         },
         {
             "name": "symfony/dom-crawler",
@@ -465,12 +466,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/DomCrawler.git",
-                "reference": "35fe9f9c57421bf70ce9a43c614f41d295b4d984"
+                "reference": "c9698b3b5b93d18250f627a9001c88fe5bc87908"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/DomCrawler/zipball/35fe9f9c57421bf70ce9a43c614f41d295b4d984",
-                "reference": "35fe9f9c57421bf70ce9a43c614f41d295b4d984",
+                "url": "https://api.github.com/repos/symfony/DomCrawler/zipball/c9698b3b5b93d18250f627a9001c88fe5bc87908",
+                "reference": "c9698b3b5b93d18250f627a9001c88fe5bc87908",
                 "shasum": ""
             },
             "require": {
@@ -482,7 +483,6 @@
             "suggest": {
                 "symfony/css-selector": "2.2.*"
             },
-            "time": "2013-03-06 19:37:18",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -509,7 +509,8 @@
                 }
             ],
             "description": "Symfony DomCrawler Component",
-            "homepage": "http://symfony.com"
+            "homepage": "http://symfony.com",
+            "time": "2013-03-23 07:35:36"
         },
         {
             "name": "symfony/event-dispatcher",
@@ -536,7 +537,6 @@
                 "symfony/dependency-injection": "2.2.*",
                 "symfony/http-kernel": "2.2.*"
             },
-            "time": "2013-02-11 11:27:01",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -563,7 +563,8 @@
                 }
             ],
             "description": "Symfony EventDispatcher Component",
-            "homepage": "http://symfony.com"
+            "homepage": "http://symfony.com",
+            "time": "2013-02-11 11:27:01"
         },
         {
             "name": "symfony/finder",
@@ -572,18 +573,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Finder.git",
-                "reference": "0b33214ce24e33b6d11fd7de8784ff34ba16711f"
+                "reference": "a066c83f57c82ce49b5abc6343a43c132f771c24"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Finder/zipball/0b33214ce24e33b6d11fd7de8784ff34ba16711f",
-                "reference": "0b33214ce24e33b6d11fd7de8784ff34ba16711f",
+                "url": "https://api.github.com/repos/symfony/Finder/zipball/a066c83f57c82ce49b5abc6343a43c132f771c24",
+                "reference": "a066c83f57c82ce49b5abc6343a43c132f771c24",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
-            "time": "2013-03-01 06:43:27",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -610,7 +610,8 @@
                 }
             ],
             "description": "Symfony Finder Component",
-            "homepage": "http://symfony.com"
+            "homepage": "http://symfony.com",
+            "time": "2013-03-23 07:42:25"
         },
         {
             "name": "symfony/process",
@@ -619,18 +620,17 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/symfony/Process.git",
-                "reference": "6ebe4ba544cfc0dd25bfe49402da4d5267ee1b43"
+                "reference": "46b24c5905096914d467b769027e36433c7b5421"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/symfony/Process/zipball/6ebe4ba544cfc0dd25bfe49402da4d5267ee1b43",
-                "reference": "6ebe4ba544cfc0dd25bfe49402da4d5267ee1b43",
+                "url": "https://api.github.com/repos/symfony/Process/zipball/46b24c5905096914d467b769027e36433c7b5421",
+                "reference": "46b24c5905096914d467b769027e36433c7b5421",
                 "shasum": ""
             },
             "require": {
                 "php": ">=5.3.3"
             },
-            "time": "2013-02-18 21:28:20",
             "type": "library",
             "extra": {
                 "branch-alias": {
@@ -657,10 +657,13 @@
                 }
             ],
             "description": "Symfony Process Component",
-            "homepage": "http://symfony.com"
+            "homepage": "http://symfony.com",
+            "time": "2013-03-23 08:06:49"
         }
     ],
-    "packages-dev": null,
+    "packages-dev": [
+
+    ],
     "aliases": [
 
     ],
@@ -669,5 +672,11 @@
         "bluelyte/tpb-client": 20,
         "bluelyte/imdb-client": 20,
         "bluelyte/transmission-remote": 20
-    }
+    },
+    "platform": {
+        "php": ">=5.3.3"
+    },
+    "platform-dev": [
+
+    ]
 }
