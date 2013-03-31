@@ -68,6 +68,15 @@ class Downloader
 
             $logger->debug('Fetching episodes for "' . $title . '" season ' . $latestSeason);
             $episodes = $imdb->getSeasonEpisodes($id, $latestSeason);
+            $now = mktime(0, 0, 0);
+            $episodes = array_filter($episodes, function($episode) use ($now) {
+                    return preg_match('/^[A-z]{3}\.? [0-9]{1,2}, [0-9]{4}$/', $episode['airdate'])
+                        && strtotime($episode['airdate']) < $now;
+                });
+            if (!$episodes) {
+                $logger->debug('No latest episode found, skipping');
+                continue;
+            }
             $latestEpisode = max(array_keys($episodes));
 
             $logger->debug('Checking if episode ' . $latestEpisode . ' has already been downloaded');
