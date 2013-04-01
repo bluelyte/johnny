@@ -44,19 +44,81 @@ class Downloader
     protected $downloadPath = null;
 
     /**
+     * Filters an episode list to those with full air dates before today.
+     *
+     * @param array $episodes Enumerated array of associative arrays of episode data
+     * @return array Filtered copy of $episodes
+     */
+    protected function filterEpisodes(array $episodes)
+    {
+        $now = mktime(0, 0, 0);
+        return array_filter($episodes, function($episode) use ($now) {
+                return preg_match('/^[A-z]{3}\.? [0-9]{1,2}, [0-9]{4}$/', $episode['airdate'])
+                    && strtotime($episode['airdate']) < $now;
+            });
+    }
+
+    /**
+     * Returns a regular expression for a given episode.
+     *
+     * @return string
+     */
+    protected function getEpisodePattern($title, $season, $episode)
+    {
+        return '/' . preg_replace('/\s+/', '.+', preg_quote($title)) . '.+s0?' . $season . 'e0?' . $episode . '[^0-9]/i';
+    }
+
+    /**
+     * Returns a list of file paths corresponding to a given episode.
+     *
+     * @param string $title Title of the show
+     * @param int $season Season of the episode
+     * @param int $episode Episode number
+     * @return array List of one or more files in the download path
+     *         corresponding to the episode
+     */
+    protected function getEpisodeFiles($title, $season, $episode)
+    {
+        $pattern = $this->getEpisodePattern($title, $season, $episode);
+        return array_filter(
+            iterator_to_array(new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($this->getDownloadPath()))),
+            function($entry) use ($pattern) {
+                return (boolean) preg_match($pattern, $entry->getPathname());
+            }
+        );
+    }
+
+    /**
+     * Returns the results of a torrent search for a given episode.
+     *
+     * @param string $title Title of the show
+     * @param int $season Season of the episode
+     * @param int $episode Episode number
+     * @return array Enumerated array of associative arrays of torrent
+     *         search results
+     */
+    protected function getEpisodeTorrents($title, $season, $episode)
+    {
+        $pattern = $this->getEpisodePattern($title, $season, $episode);
+        $term = $title . ' S' . str_pad($season, 2, '0', STR_PAD_LEFT) . 'E' . str_pad($episode, 2, '0', STR_PAD_LEFT);
+        $response = $this->getTpbClient()->search($term);
+        return array_filter($response['results'], function($result) use ($pattern) {
+            return (boolean) preg_match($pattern, $result['name']);
+        });
+    }
+
+    /**
      * Downloads the latest episodes of the specified shows to the specified
      * download path.
      */
     public function downloadLatestEpisodes()
     {
         $series = $this->getSeries();
-        $downloadPath = $this->getDownloadPath();
         $imdb = $this->getImdbClient();
-        $tpb = $this->getTpbClient();
         $remote = $this->getRemote();
         $logger = $this->getLogger();
 
-        $remote->setDownloadPath($downloadPath);
+        $remote->setDownloadPath($this->getDownloadPath());
         $remote->start();
 
         foreach ($series as $id)
@@ -67,12 +129,7 @@ class Downloader
             $latestSeason = $showInfo['latestSeason'];
 
             $logger->debug('Fetching episodes for "' . $title . '" season ' . $latestSeason);
-            $episodes = $imdb->getSeasonEpisodes($id, $latestSeason);
-            $now = mktime(0, 0, 0);
-            $episodes = array_filter($episodes, function($episode) use ($now) {
-                    return preg_match('/^[A-z]{3}\.? [0-9]{1,2}, [0-9]{4}$/', $episode['airdate'])
-                        && strtotime($episode['airdate']) < $now;
-                });
+            $episodes = $this->filterEpisodes($imdb->getSeasonEpisodes($id, $latestSeason));
             if (!$episodes) {
                 $logger->debug('No latest episode found, skipping');
                 continue;
@@ -80,30 +137,19 @@ class Downloader
             $latestEpisode = max(array_keys($episodes));
 
             $logger->debug('Checking if episode ' . $latestEpisode . ' has already been downloaded');
-            $pattern = '/' . preg_replace('/\s+/', '.+', preg_quote($title)) . '.+s0?' . $latestSeason . 'e0?' . $latestEpisode . '[^0-9]/i';
-
-            $files = array_filter(
-                iterator_to_array(new \RecursiveIteratorIterator(new \RecursiveDirectoryIterator($downloadPath))),
-                function($entry) use ($pattern) {
-                    return (boolean) preg_match($pattern, $entry->getPathname());
-                }
-            );
+            $files = $this->getEpisodeFiles($title, $latestSeason, $latestEpisode);
             if ($files) {
-                $logger->debug('Skipping, found episode at ' . reset($files));
+                $logger->debug('Found episode at ' . reset($files) . ', skipping');
                 continue;
             }
 
             $logger->debug('Searching for episode torrent');
-            $term = $title . ' S' . str_pad($latestSeason, 2, '0', STR_PAD_LEFT) . 'E' . str_pad($latestEpisode, 2, '0', STR_PAD_LEFT);
-            $response = $tpb->search($term);
-            $results = array_filter($response['results'], function($result) use ($pattern) {
-                return (boolean) preg_match($pattern, $result['name']);
-            });
-            $result = reset($results);
-            if (!$result) {
-                $logger->debug('Skipping, no results found');
+            $results = $this->getEpisodeTorrents($title, $latestSeason, $latestEpisode);
+            if (!$results) {
+                $logger->debug('No results found, skipping');
                 continue;
             }
+            $result = reset($results);
 
             $logger->debug('Adding torrent "' . $result['name'] . '" with link "'. $result['magnetLink'] . '" to download queue');
             $remote->addTorrents($result['magnetLink']);
