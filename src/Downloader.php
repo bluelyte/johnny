@@ -32,12 +32,6 @@ class Downloader
     protected $logger;
 
     /**
-     * List of IMDB identifiers for shows to download
-     * @var array
-     */
-    protected $series = array();
-
-    /**
      * Path to destination directory for downloaded files
      * @var string
      */
@@ -110,10 +104,11 @@ class Downloader
     /**
      * Downloads the latest episodes of the specified shows to the specified
      * download path.
+     *
+     * @param array $series List of IMDB identifiers for shows to download
      */
-    public function downloadLatestEpisodes()
+    public function downloadLatestEpisodes(array $series)
     {
-        $series = $this->getSeries();
         $imdb = $this->getImdbClient();
         $remote = $this->getRemote();
         $logger = $this->getLogger();
@@ -157,16 +152,6 @@ class Downloader
 
         $logger->debug('Starting torrent downloads');
         $remote->startTorrents();
-    }
-
-    public function getSeries()
-    {
-        return $this->series;
-    }
-
-    public function setSeries(array $series)
-    {
-        $this->series = $series;
     }
 
     public function setDownloadPath($downloadPath)
