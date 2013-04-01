@@ -25,11 +25,10 @@ require __DIR__ . '/vendor/autoload.php';
 
 $downloader = new \Bluelyte\Johnny\Downloader;
 $downloader->setDownloadPath('/home/username/Downloads');
-$downloader->setSeries(array(
+$downloader->downloadLatestEpisodes(array(
     'tt0898266', // The Big Bang Theory (http://www.imdb.com/title/tt0898266/)
     'tt0433309', // Numb3rs (http://www.imdb.com/title/tt0433309/)
 ));
-$downloader->downloadLatestEpisodes();
 ```
 
 ## License
