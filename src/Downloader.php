@@ -102,6 +102,37 @@ class Downloader
     }
 
     /**
+     * Downloads a single episode if it does not already exist in the download
+     * path.
+     *
+     * @param string $title Title of the show
+     * @param int $season Season of the episode
+     * @param int $episode Episode number
+     */
+    protected function downloadEpisode($title, $season, $episode)
+    {
+        $logger = $this->getLogger();
+
+        $logger->debug('Checking if episode ' . $latestEpisode . ' has already been downloaded');
+        $files = $this->getEpisodeFiles($title, $latestSeason, $latestEpisode);
+        if ($files) {
+            $logger->debug('Found episode at ' . reset($files) . ', skipping');
+            return;
+        }
+
+        $logger->debug('Searching for episode torrent');
+        $results = $this->getEpisodeTorrents($title, $latestSeason, $latestEpisode);
+        if (!$results) {
+            $logger->debug('No results found, skipping');
+            return;
+        }
+        $result = reset($results);
+
+        $logger->debug('Adding torrent "' . $result['name'] . '" with link "'. $result['magnetLink'] . '" to download queue');
+        $this->getRemote()->addTorrents($result['magnetLink']);
+    }
+
+    /**
      * Downloads the latest episodes of the specified shows to the specified
      * download path.
      *
@@ -131,23 +162,7 @@ class Downloader
             }
             $latestEpisode = max(array_keys($episodes));
 
-            $logger->debug('Checking if episode ' . $latestEpisode . ' has already been downloaded');
-            $files = $this->getEpisodeFiles($title, $latestSeason, $latestEpisode);
-            if ($files) {
-                $logger->debug('Found episode at ' . reset($files) . ', skipping');
-                continue;
-            }
-
-            $logger->debug('Searching for episode torrent');
-            $results = $this->getEpisodeTorrents($title, $latestSeason, $latestEpisode);
-            if (!$results) {
-                $logger->debug('No results found, skipping');
-                continue;
-            }
-            $result = reset($results);
-
-            $logger->debug('Adding torrent "' . $result['name'] . '" with link "'. $result['magnetLink'] . '" to download queue');
-            $remote->addTorrents($result['magnetLink']);
+            $this->downloadEpisode($title, $latestSeason, $latestEpisode);
         }
 
         $logger->debug('Starting torrent downloads');
