@@ -43,12 +43,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/bluelyte/tpb-client.git",
-                "reference": "5a5cc9db4fc0946435cd256882e78b05e3898564"
+                "reference": "675232dcc265e0c986e1a1e77fb331360c2ab562"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bluelyte/tpb-client/zipball/5a5cc9db4fc0946435cd256882e78b05e3898564",
-                "reference": "5a5cc9db4fc0946435cd256882e78b05e3898564",
+                "url": "https://api.github.com/repos/bluelyte/tpb-client/zipball/675232dcc265e0c986e1a1e77fb331360c2ab562",
+                "reference": "675232dcc265e0c986e1a1e77fb331360c2ab562",
                 "shasum": ""
             },
             "require": {
@@ -72,7 +72,7 @@
                 "torrents",
                 "tpb"
             ],
-            "time": "2013-03-31 15:15:38"
+            "time": "2013-03-31 15:19:37"
         },
         {
             "name": "bluelyte/transmission-remote",
@@ -80,12 +80,12 @@
             "source": {
                 "type": "git",
                 "url": "https://github.com/bluelyte/transmission-remote.git",
-                "reference": "e0e69d15552603bf6b2be3d93bfcdff969c76b8c"
+                "reference": "de9c1dcd62e021706cc1eedded7f9fa7980bc17d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/bluelyte/transmission-remote/zipball/e0e69d15552603bf6b2be3d93bfcdff969c76b8c",
-                "reference": "e0e69d15552603bf6b2be3d93bfcdff969c76b8c",
+                "url": "https://api.github.com/repos/bluelyte/transmission-remote/zipball/de9c1dcd62e021706cc1eedded7f9fa7980bc17d",
+                "reference": "de9c1dcd62e021706cc1eedded7f9fa7980bc17d",
                 "shasum": ""
             },
             "require": {
@@ -109,7 +109,7 @@
                 "torrents",
                 "transmission"
             ],
-            "time": "2013-03-31 10:31:49"
+            "time": "2013-03-31 15:21:15"
         },
         {
             "name": "fabpot/goutte",
