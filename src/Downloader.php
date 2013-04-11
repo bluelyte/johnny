@@ -113,15 +113,15 @@ class Downloader
     {
         $logger = $this->getLogger();
 
-        $logger->debug('Checking if episode ' . $latestEpisode . ' has already been downloaded');
-        $files = $this->getEpisodeFiles($title, $latestSeason, $latestEpisode);
+        $logger->debug('Checking if episode ' . $episode . ' has already been downloaded');
+        $files = $this->getEpisodeFiles($title, $season, $episode);
         if ($files) {
             $logger->debug('Found episode at ' . reset($files) . ', skipping');
             return;
         }
 
         $logger->debug('Searching for episode torrent');
-        $results = $this->getEpisodeTorrents($title, $latestSeason, $latestEpisode);
+        $results = $this->getEpisodeTorrents($title, $season, $episode);
         if (!$results) {
             $logger->debug('No results found, skipping');
             return;
