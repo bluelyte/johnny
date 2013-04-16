@@ -1,0 +1,42 @@
+#!/usr/bin/env php
+<?php
+
+$paths = array(
+    // ./vendor/autoload.php when this is installed as a dependency of another project
+    __DIR__ . '/../../../autoload.php',
+
+    // ./vendor/autoload.php when this project is run stand-alone
+    __DIR__ . '/../../vendor/autoload.php',
+);
+
+foreach ($paths as $path) {
+    if (file_exists($path)) {
+        include $path;
+    }
+}
+
+if ($argc != 3) {
+    echo <<<EOS
+Usage: tpb-lucky "search phrase" /path/for/download
+
+Performs a search of The Pirate Bay for a given phrase, finds the result with
+the highest number of seeds, and queues that torrent for download using
+transmission-remote.
+EOS;
+    exit(1);
+}
+
+$tpb = new \Bluelyte\TPB\Client\Client();
+$response = $tpb->search($argv[1]);
+if (!$response['total']) {
+    echo 'No results found for search phrase "', $argv[1], '"', PHP_EOL;
+    exit(1);
+}
+$result = $response['results'][0];
+
+echo 'Starting download of torrent ', $result['magnetLink'], PHP_EOL;
+$remote = new \Bluelyte\Transmission\Remote();
+$remote->setDownloadPath($argv[2]);
+$remote->start();
+$remote->addTorrents($result['magnetLink']);
+$remote->startTorrents();

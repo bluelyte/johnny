@@ -12,7 +12,8 @@
         "monolog/monolog": "1.4.0"
     },
     "bin": [
-        "composer/bin/johnny"
+        "composer/bin/johnny",
+        "composer/bin/tpb-lucky"
     ],
     "config": {
         "bin-dir": "bin"
