@@ -38,5 +38,9 @@ echo 'Starting download of torrent ', $result['magnetLink'], PHP_EOL;
 $remote = new \Bluelyte\Transmission\Remote();
 $remote->setDownloadPath($argv[2]);
 $remote->start();
+if ($remote->getStatus() != 0) {
+    echo 'Failed to start transmission-daemon:', PHP_EOL, $remote->getOutput(), PHP_EOL;
+    exit(1);
+}
 $remote->addTorrents($result['magnetLink']);
 $remote->startTorrents();
