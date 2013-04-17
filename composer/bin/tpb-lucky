@@ -22,6 +22,7 @@ Usage: tpb-lucky "search phrase" /path/for/download
 Performs a search of The Pirate Bay for a given phrase, finds the result with
 the highest number of seeds, and queues that torrent for download using
 transmission-remote.
+
 EOS;
     exit(1);
 }
