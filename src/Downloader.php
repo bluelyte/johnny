@@ -38,21 +38,6 @@ class Downloader
     protected $downloadPath = null;
 
     /**
-     * Filters an episode list to those with full air dates before today.
-     *
-     * @param array $episodes Enumerated array of associative arrays of episode data
-     * @return array Filtered copy of $episodes
-     */
-    protected function filterEpisodes(array $episodes)
-    {
-        $now = mktime(0, 0, 0);
-        return array_filter($episodes, function($episode) use ($now) {
-                return preg_match('/^[A-z]{3}\.? [0-9]{1,2}, [0-9]{4}$/', $episode['airdate'])
-                    && strtotime($episode['airdate']) < $now;
-            });
-    }
-
-    /**
      * Returns a regular expression for a given episode.
      *
      * @return string
@@ -113,7 +98,7 @@ class Downloader
     {
         $logger = $this->getLogger();
 
-        $logger->debug('Checking if episode ' . $episode . ' has already been downloaded');
+        $logger->debug('Checking if episode has already been downloaded');
         $files = $this->getEpisodeFiles($title, $season, $episode);
         if ($files) {
             $logger->debug('Found episode at ' . reset($files) . ', skipping');
@@ -153,15 +138,9 @@ class Downloader
             $showInfo = $imdb->getShowInfo($id);
             $title = $showInfo['title'];
             $latestSeason = $showInfo['latestSeason'];
+            $latestEpisode = $showInfo['latestEpisode'];
 
-            $logger->debug('Fetching episodes for "' . $title . '" season ' . $latestSeason);
-            $episodes = $this->filterEpisodes($imdb->getSeasonEpisodes($id, $latestSeason));
-            if (!$episodes) {
-                $logger->debug('No latest episode found, skipping');
-                continue;
-            }
-            $latestEpisode = max(array_keys($episodes));
-
+            $logger->debug('Latest found for "' . $title . '" is season ' . $latestSeason . ' episode ' . $latestEpisode);
             $this->downloadEpisode($title, $latestSeason, $latestEpisode);
         }
 
