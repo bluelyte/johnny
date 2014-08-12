@@ -29,6 +29,7 @@ files.
 TV series for which episodes are downloaded.
 
 Example: johnny /path/to/Downloads tt12345,tt67890
+
 EOS;
     exit(1);
 }
