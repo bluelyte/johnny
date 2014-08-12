@@ -36,9 +36,8 @@ EOS;
 
 $downloader = new \Bluelyte\Johnny\Downloader;
 $downloader->setDownloadPath($argv[2]);
-$downloader->setSeries(explode(',', $argv[3]));
 if ($argv[1] == 'latest') {
-    $downloader->downloadLatestEpisodes();
+    $downloader->downloadLatestEpisodes(explode(',', $argv[3]));
 } else {
     echo 'Unrecognized command: ', $argv[1], PHP_EOL;
     exit(1);
